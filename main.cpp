@@ -14,5 +14,10 @@ int main()
     }
     std::cout << std::endl;
     std::cout << win_nums.size() << std::endl;
+
+    std::string user_lose = userLose();
+    std::cout << user_lose << std::endl;
+    
+
     return 0;
 }

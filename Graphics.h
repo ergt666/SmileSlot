@@ -4,5 +4,6 @@
 #include <string>
 
 void startLogo();
+std::string userLose();
 
 #endif
