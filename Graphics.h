@@ -5,5 +5,6 @@
 
 void startLogo();
 std::string userLose();
+std::string userWin(int i);
 
 #endif
