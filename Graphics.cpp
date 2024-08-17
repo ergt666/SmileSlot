@@ -18,24 +18,32 @@ void startLogo() {
 
 string userLose() 
 {
-
-    string user_lose;
-    string wall = "||";
-    vector<int> nums;
+    string user_lose = "";   
+    vector<int> nums = {};
+    bool isX = true;
 
     random_device rd;
     mt19937 gen(rd());
     
-    while (nums.size() != 3) 
+    while (isX) 
     {
         uniform_int_distribution<> distrib(1, 6);
         int random_num = distrib(gen);
         
-        auto it = adjacent_find(nums.begin(), nums.end());
+        nums.push_back(random_num);
 
-        if (it == nums.end()) 
-        {
-            nums.push_back(random_num);
+        if (nums.size() == 3) 
+        {                                                        //[&] читає значення з вектора
+            bool all_equal = std::all_of(nums.begin(), nums.end(), [&](int num) { return num == nums[0]; });
+            if (all_equal)
+            {
+                // якщо всі значення 1, 1, 1 тобто виграшні то перезапуск
+                nums.clear();
+            }
+            else
+            {
+                isX = false;
+            }
         }
     } 
 
@@ -43,12 +51,12 @@ string userLose()
     {
         switch (n) 
         {
-        case 1: user_lose += "|| (ノ￣▽￣)ノ ||";break;
-        case 2: user_lose += "|| ＼(￣□￣)／ ||"; break;
-        case 3: user_lose += "||   ⊚ ◡ ⊚     ||"; break;
-        case 4: user_lose += "||   (◕‿◕)ノ   ||"; break;
-        case 5: user_lose += "|| ╰(°ㅂ° )╯   ||"; break;
-        case 6: user_lose += "||   (⌐■_■)-   ||"; break;
+            case 1: user_lose += "|| (ノ￣▽￣)ノ ||";break;
+            case 2: user_lose += "|| ＼(￣□￣)／ ||"; break;
+            case 3: user_lose += "||   ⊚ ◡ ⊚     ||"; break;
+            case 4: user_lose += "||   (◕‿◕)ノ   ||"; break;
+            case 5: user_lose += "|| ╰(°ㅂ° )╯   ||"; break;
+            case 6: user_lose += "||   (⌐■_■)-   ||"; break;
         }
     }
     return user_lose;
@@ -56,16 +64,16 @@ string userLose()
 
 string userWin(int i)
 {
-    string user_win;
+    string user_win = "";
     switch (i)
     {
-    case 1: user_win += "||  (◕‿◕)ノ   ||  (◕‿◕)ノ    ||   (◕‿◕)ノ   ||\nYou win: 2$\n" ; break;
-    case 2: user_win += "|| (ノ￣▽￣)ノ || (ノ￣▽￣)ノ || (ノ￣▽￣)ノ ||\nYou win: 3$\n" ; break;
-    case 3: user_win += "|| ＼(￣□￣)／ || ＼(￣□￣)／ || ＼(￣□￣)／ ||\nYou win: 7$\n"; break;
-    case 4: user_win += "||   (⌐■_■)-   ||   (⌐■_■)-   ||   (⌐■_■)-   ||\nYou win: 20\n"; break;
-    case 5: user_win += "||   ⊚ ◡ ⊚     ||   ⊚ ◡ ⊚     ||   ⊚ ◡ ⊚     ||      \nYou win: 50$\n"; break;
-    case 6: user_win += "|| ╰(°ㅂ° )╯   || ╰(°ㅂ° )╯   || ╰(°ㅂ° )╯   ||\nYou win: 100$\n"; break;
-    default: break;
+        case 1: user_win += "||  (◕‿◕)ノ   ||  (◕‿◕)ノ    ||   (◕‿◕)ノ   ||\nYou win: 2$\n" ; break;
+        case 2: user_win += "|| (ノ￣▽￣)ノ || (ノ￣▽￣)ノ || (ノ￣▽￣)ノ ||\nYou win: 3$\n" ; break;
+        case 3: user_win += "|| ＼(￣□￣)／ || ＼(￣□￣)／ || ＼(￣□￣)／ ||\nYou win: 7$\n"; break;
+        case 4: user_win += "||   (⌐■_■)-   ||   (⌐■_■)-   ||   (⌐■_■)-   ||\nYou win: 20\n"; break;
+        case 5: user_win += "||   ⊚ ◡ ⊚     ||   ⊚ ◡ ⊚     ||   ⊚ ◡ ⊚     ||      \nYou win: 50$\n"; break;
+        case 6: user_win += "|| ╰(°ㅂ° )╯   || ╰(°ㅂ° )╯   || ╰(°ㅂ° )╯   ||\nYou win: 100$\n"; break;
+        default: break;
     }
     return user_win;
 }
