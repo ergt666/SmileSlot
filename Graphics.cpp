@@ -5,15 +5,26 @@
 
 using namespace std;
 
-void startLogo() {
-        cout << endl;
-        cout << u8"(ノ￣▽￣)ノ (ʘ‿ʘ) (◕‿◕)ノ (⌐■_■)- (つ･･)つ ⊚ ◡ ⊚ ╰(°ㅂ° )╯ ＼(￣□￣)／ (ʘ‿ʘ)ノ"   << endl;
-        cout << endl;
-        cout << "                                   Smile Slot :)                        " << endl;
-        cout << endl;
-        cout << u8"(ノ￣▽￣)ノ (ʘ‿ʘ) (◕‿◕)ノ (⌐■_■)- (つ･･)つ ⊚ ◡ ⊚ ╰(°ㅂ° )╯ ＼(￣□￣)／ (ʘ‿ʘ)ノ"   << endl;
-        cout << endl;
-        cout << endl;
+void startLogo() 
+{
+    cout << endl;
+    cout << u8"(ノ￣▽￣)ノ (ʘ‿ʘ) (◕‿◕)ノ (⌐■_■)- (つ･･)つ ⊚ ◡ ⊚ ╰(°ㅂ° )╯ ＼(￣□￣)／ (ʘ‿ʘ)ノ"   << endl;
+    cout << endl;
+    cout << "                                   Smile Slot :)                        " << endl;
+    cout << endl;
+    cout << u8"(ノ￣▽￣)ノ (ʘ‿ʘ) (◕‿◕)ノ (⌐■_■)- (つ･･)つ ⊚ ◡ ⊚ ╰(°ㅂ° )╯ ＼(￣□￣)／ (ʘ‿ʘ)ノ"   << endl;
+    cout << endl;
+    cout << endl;
+}
+
+void menuPrize()
+{
+    cout << "3x   (◕‿◕)ノ   = 2$" << endl; 
+    cout << "3x (ノ￣▽￣)ノ = 3$" << endl;
+    cout << "3x ＼(￣□￣)／ = 7$" << endl;
+    cout << "3x   (⌐■_■)-   = 20$" << endl;
+    cout << "3x   ⊚ ◡ ⊚     = 50$" << endl;
+    cout << "3x ╰(°ㅂ° )╯   = 100$" << endl;
 }
 
 string userLose() 
@@ -49,16 +60,18 @@ string userLose()
 
     for (const auto& n : nums) 
     {
+        user_lose += "||";
         switch (n) 
         {
-            case 1: user_lose += "|| (ノ￣▽￣)ノ ||";break;
-            case 2: user_lose += "|| ＼(￣□￣)／ ||"; break;
-            case 3: user_lose += "||   ⊚ ◡ ⊚     ||"; break;
-            case 4: user_lose += "||   (◕‿◕)ノ   ||"; break;
-            case 5: user_lose += "|| ╰(°ㅂ° )╯   ||"; break;
-            case 6: user_lose += "||   (⌐■_■)-   ||"; break;
+            case 1: user_lose += " (ノ￣▽￣)ノ ";break;
+            case 2: user_lose += " ＼(￣□￣)／ "; break;
+            case 3: user_lose += "   ⊚ ◡ ⊚     "; break;
+            case 4: user_lose += "   (◕‿◕)ノ   "; break;
+            case 5: user_lose += " ╰(°ㅂ° )╯   "; break;
+            case 6: user_lose += "   (⌐■_■)-   "; break;
         }
     }
+    user_lose += "||";
     return user_lose;
 }
 

@@ -4,6 +4,7 @@
 #include <string>
 
 void startLogo();
+void menuPrize();
 std::string userLose();
 std::string userWin(int i);
 

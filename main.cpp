@@ -14,25 +14,25 @@ int main()
     int userWallet = 1000;
 
     startLogo();   
-    
+    menuPrize();
     while (start_game)
     {
         //add play menu music
         // генеруємо виграшні номера
         std::vector<int> win_nums = winNums();
-        for (const auto& n : win_nums)
+        /*for (const auto& n : win_nums)
         {
             std::cout << n << " ";
-        }
+        }*/
         //add text "You Balance: " "$"; "Play press (1), Exit press (0) "
-        std::cout << "p or x: " << std::endl;
+        std::cout << "\nYou Balance: " << userWallet << "$" << "\nPlay press (1), Exit press (0): ";
         std::cin >> play_or_exit;
         //add start play music 
         if (play_or_exit == "1") 
         {
             for (int i = 1; i <= 1000; i++)
             {
-                userWallet -= 1;
+                system("clear");
                 auto it = std::find(win_nums.begin(), win_nums.end(), i);
                 if (it != win_nums.end())
                 {
@@ -113,7 +113,13 @@ int main()
                 else
                 {
                     std::string user_lose = userLose();
-                    std::cout << user_lose << std::endl;
+                    for (char s : user_lose)
+                    {
+                        std::cout << s;
+                        std::cout.flush();
+                        std::this_thread::sleep_for(std::chrono::milliseconds(25));
+                    }
+                    userWallet -= 1;
                 }
                 std::cout << "\nYou Balance: " << userWallet << "$" << "\nPlay press (1), Exit press (0): ";
                 std::cin >> play_or_exit;
