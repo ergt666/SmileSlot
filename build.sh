@@ -4,7 +4,7 @@
 OUTPUT="my_game"
 
 # Список файлів для компіляції
-SOURCES="main.cpp GameLogic.cpp Graphics.cpp"
+SOURCES="main.cpp GameLogic.cpp Graphics.cpp -lsfml-audio -lsfml-system"
 
 # Компіляція за допомогою g++
 g++ -o $OUTPUT $SOURCES

@@ -6,6 +6,12 @@
 #include <cstdlib> 
 #include "GameLogic.h"
 #include "Graphics.h"
+#include <SFML/Audio.hpp>
+
+void audioManagerMenu();
+void audioManagerWin();
+void audioManagerLose();
+void audioManagerButton();
 
 int main()
 {
@@ -18,6 +24,7 @@ int main()
     while (start_game)
     {
         //add play menu music
+        audioManagerMenu();
         // генеруємо виграшні номера
         std::vector<int> win_nums = winNums();
         /*for (const auto& n : win_nums)
@@ -27,7 +34,7 @@ int main()
         //add text "You Balance: " "$"; "Play press (1), Exit press (0) "
         std::cout << "\nYou Balance: " << userWallet << "$" << "\nPlay press (1), Exit press (0): ";
         std::cin >> play_or_exit;
-        //add start play music 
+        audioManagerButton();
         if (play_or_exit == "1") 
         {
             for (int i = 1; i <= 1000; i++)
@@ -48,6 +55,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 2;
+                        audioManagerWin();
                     }
                     if (index >= 100 && index <= 139)
                     {
@@ -60,6 +68,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 3;
+                        audioManagerWin();
                     }
                     if (index >= 140 && index <= 159)
                     {
@@ -72,6 +81,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 7;
+                        audioManagerWin();
                     }
                     if (index >= 160 && index <= 169)
                     {
@@ -84,6 +94,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 20;
+                        audioManagerWin();
                     }
                     if (index >= 170 && index <= 173)
                     {
@@ -96,6 +107,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 50;
+                        audioManagerWin();
                     }
                     if (index == 174)
                     {
@@ -108,6 +120,7 @@ int main()
                             std::this_thread::sleep_for(std::chrono::milliseconds(25));
                         }
                         userWallet += 100;
+                        audioManagerWin();
                     }
                 } 
                 else
@@ -120,11 +133,13 @@ int main()
                         std::this_thread::sleep_for(std::chrono::milliseconds(25));
                     }
                     userWallet -= 1;
+                    audioManagerLose();
                 }
                 std::cout << "\nYou Balance: " << userWallet << "$" << "\nPlay press (1), Exit press (0): ";
                 std::cin >> play_or_exit;
                 std::cout << std::endl;
-                if (play_or_exit == "0") goto exit;  
+                if (play_or_exit == "0") goto exit;
+                audioManagerButton();  
             } 
         }
         else
@@ -135,4 +150,44 @@ int main()
     }
     exit:
     return 0;
+}
+void audioManagerMenu()
+{
+    static sf::Music music;
+    if (!music.openFromFile("/home/ergt/Projects/SmileSlot/AcidJazzKevinMacLeod.mp3"))
+    {
+        std::cout << "Не вдалося відкрити перший файл!" << std::endl;
+        return;
+    }
+    music.play();
+}
+void audioManagerWin()
+{
+    static sf::Music music;
+    if (!music.openFromFile("/home/ergt/Projects/SmileSlot/coinwin.mp3"))
+    {
+        std::cout << "Не вдалося відкрити перший файл!" << std::endl;
+        return;
+    }
+    music.play();
+}
+void audioManagerLose()
+{
+    static sf::Music music;
+    if (!music.openFromFile("/home/ergt/Projects/SmileSlot/Ohmygah2.mp3"))
+    {
+        std::cout << "Не вдалося відкрити перший файл!" << std::endl;
+        return;
+    }
+    music.play();
+}
+void audioManagerButton()
+{
+    static sf::Music music;
+    if (!music.openFromFile("/home/ergt/Projects/SmileSlot/knopka.mp3"))
+    {
+        std::cout << "Не вдалося відкрити перший файл!" << std::endl;
+        return;
+    }
+    music.play();
 }
